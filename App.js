@@ -1,19 +1,14 @@
+// point d'entrée de l'application
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import Groupe from './Components/Groupe'
+import Header from './Components/Header'
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
+export default class App extends React.Component {
+  render() {
+    return(
+      // insérer la vue qu'on souhaite afficher sur le point d'entrée
+      // temporairement j'ai mit la recherche de groupe
+      <Groupe/>
+    )
+  }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
