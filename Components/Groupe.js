@@ -7,6 +7,7 @@ import Header from './Header'
 import GroupeItem from './GroupeItem'
 //import de la librairie pour faire une searchbar
 import { createFilter } from 'react-native-search-filter'
+import { TouchableOpacity } from 'react-native-gesture-handler'
 
 //constante qui nous servira à désigner quel(s) item(s) du groupesData servira pour filtrer la recherche
 const KEYS_TO_FILTERS = ['group_name']
@@ -19,10 +20,16 @@ class Groupe extends React.Component {
         this.state = {
           searchTerm: ''
         }
+
+        console.log(props)
       }
       // méthode qui permet de mettre à jour le state
       searchUpdated(term) {
         this.setState({ searchTerm: term })
+      }
+
+      handleOnPress = () => {
+          this.props.navigation.navigate("DetailGroupe")
       }
 
     render() {
@@ -50,8 +57,7 @@ class Groupe extends React.Component {
                     <FlatList
                     data={filteredGroupes}
                     keyExtractor={(item) => item.id.toString()}
-                    renderItem={({item}) => <GroupeItem groupe={item}/>}
-                    />
+                    renderItem={({item}) => <TouchableOpacity onPress={this.handleOnPress}><GroupeItem groupe={item} /></TouchableOpacity> }/>
                 </View>
             </React.Fragment>
         )

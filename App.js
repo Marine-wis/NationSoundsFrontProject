@@ -1,14 +1,31 @@
 // point d'entrée de l'application
-import React from 'react';
 import Groupe from './Components/Groupe'
+import * as React from 'react';
+import { View, Text } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import Header from './Components/Header'
 
-export default class App extends React.Component {
-  render() {
-    return(
-      // insérer la vue qu'on souhaite afficher sur le point d'entrée
-      // temporairement j'ai mit la recherche de groupe
-      <Groupe/>
-    )
-  }
+function HomeScreen() {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Home Screen</Text>
+    </View>
+  );
 }
+
+const Stack = createStackNavigator();
+
+function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        {/* <Stack.Screen name="Groupes" component={Groupe} options={{header: () => <Header/>}}/> */}
+        <Stack.Screen name="Groupes" component={Groupe} options={{header: () => {}}}/>
+        <Stack.Screen name="DetailGroupe" component={Groupe}/>
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
+
+export default App;
