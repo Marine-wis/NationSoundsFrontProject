@@ -1,3 +1,6 @@
+
+//est inutile, mais je l'ai gardé pour référence au cas où
+
 // custom component qui fait le header (logo + icone menu)
 import React from 'react'
 import { StyleSheet, View, Image } from 'react-native'
@@ -13,7 +16,7 @@ class Header extends React.Component {
                 <View style={styles.logo_container}>
                     <Image
                     style={styles.logo}
-                    source={require('../assets/logo.png')}
+                    source={require('../assets/logoNS.png')}
                     resizeMode="contain"
                 />
                 </View>
@@ -34,19 +37,20 @@ const styles = StyleSheet.create ({
     // },
 
     menu_bar: {
-        flex: 1,
+        // flex: 1,
         marginTop: 20,
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
         flexWrap: "wrap",
+        height: 60,
         // backgroundColor: 'yellow',
     },
 
     logo: {
         flex:1, 
-        height: undefined, 
-        width: undefined,
+        height: null, 
+        width: null,
     },
 
     icons_container: {

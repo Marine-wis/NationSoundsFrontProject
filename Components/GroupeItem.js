@@ -12,7 +12,10 @@ class GroupeItem extends React.Component {
                 <Image
                 style={styles.image}
                 //ici on récupère l'image, mais ne fonctionne pas encore en expo
-                source={{uri:groupe.id + ".jpg"}}
+                // source={{uri:groupe.id + ".jpg"}}
+                //image pour voir comment ça rend :
+                source={require("../assets/groupesPics/5.jpg")}
+
                 />
                 <View style={styles.content_container}>
                     {/* ici on récupère les infos nom du groupe et sa description */}
@@ -35,6 +38,7 @@ const styles = StyleSheet.create({
     image: {
     width: 120,
     height: 120,
+    resizeMode: "cover",
     backgroundColor: 'gray'
     },
 

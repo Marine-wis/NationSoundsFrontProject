@@ -22,14 +22,22 @@ class Groupe extends React.Component {
         }
 
         console.log(props)
+        if (props.route.params && props.route.params.groupId) {
+
+            console.log('GroupeId:', props.route.params.groupId)
+        }
       }
       // méthode qui permet de mettre à jour le state
       searchUpdated(term) {
         this.setState({ searchTerm: term })
       }
 
-      handleOnPress = () => {
-          this.props.navigation.navigate("DetailGroupe")
+      //permet de gérer la naviation vers DetailGroupe qui est défini dans le stack navigator de App.js
+      handleOnPress = (item) => {
+          this.props.navigation.navigate("DetailGroupe", {
+            
+            groupe: item
+        })
       }
 
     render() {
@@ -40,7 +48,7 @@ class Groupe extends React.Component {
         return (
             <React.Fragment>
             {/* ici on appelle le header */}
-                <Header/>
+                {/* <Header/> */}
                 {/* ici on a le contenant principal */}
                 <View style={styles.main_container}>
                     {/* champ de recherche */}
@@ -57,7 +65,8 @@ class Groupe extends React.Component {
                     <FlatList
                     data={filteredGroupes}
                     keyExtractor={(item) => item.id.toString()}
-                    renderItem={({item}) => <TouchableOpacity onPress={this.handleOnPress}><GroupeItem groupe={item} /></TouchableOpacity> }/>
+                    //avec le TouchableOpacity on permet de naviguer vers le GroupeDetail
+                    renderItem={({item}) => <TouchableOpacity onPress={() => this.handleOnPress(item)}><GroupeItem groupe={item} /></TouchableOpacity> }/>
                 </View>
             </React.Fragment>
         )
@@ -76,7 +85,7 @@ const styles = StyleSheet.create({
         borderColor: '#000000',
         borderWidth: 0.5,
         paddingLeft: 5,
-        backgroundColor: '#f2f3f4',
+        backgroundColor: 'white',
         marginBottom: 5,
       }
 
